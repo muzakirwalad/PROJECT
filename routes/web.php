@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -51,8 +52,20 @@ Route::middleware('auth')->group(function () {
         Route::put('edit/{id}', 'update')->name('mfrflorists.update');
         Route::delete('destroy/{id}', 'destroy')->name('mfrflorists.destroy');
 
+
     });
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
+
+
+    Route::get('/pengantar', function () {
+        return view('pengantar.index');
+    });
+    Route::get('/tambah', function () {
+        return view('pengantar.tambah');
+    });
+
+
+
 });
 
 require __DIR__.'/auth.php';

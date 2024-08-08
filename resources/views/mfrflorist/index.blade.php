@@ -1,11 +1,8 @@
 @extends('layouts.app')
-
-@section('title', 'Beranda')
-
 @section('contents')
     <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">Daftar Papan Bunga</h1>
-        <a href="{{ route('mfrflorists.create')}}" class="btn btn-primary">Tambah pemesanan</a>
+        <h1 class="mb-0">Daftar Pemesan</h1>
+        <a href="{{ route('mfrflorists.create')}}" class="btn btn-primary">Tambah pemesan</a>
     </div>
     <hr />
     @if(Session::has('success'))
@@ -13,10 +10,10 @@
             {{ Session::get('success') }}
         </div>
     @endif
-    <table class="table table-hover">
+    <table class="table table-hover table-bordered">
         <thead class="table-primary">
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Tanggal pemesanan</th>
@@ -25,7 +22,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>+
+        <tbody>
             @if($mfrflorist->count() > 0)
                 @foreach($mfrflorist as $rs)
                     <tr>
@@ -40,7 +37,7 @@
 
                             <a href="{{ route('mfrflorists.show', $rs->id) }}" type="button" class="btn btn-secondary">Detail</a>
                             <a href="{{ route('mfrflorists.edit', $rs->id) }}" type="button" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('mfrflorists.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+                            <form action="{{ route('mfrflorists.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('yakin ?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger m-0">Hapus</button>

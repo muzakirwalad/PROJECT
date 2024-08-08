@@ -21,7 +21,13 @@
     <li class="nav-item">
       <a class="nav-link" href="{{ route('mfrflorists') }}">
         <i class="bi bi-shop"></i>
-        <span>mfrflorists</span></a>
+        <span>pemesan</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/pengantar">
+        <i class="bi bi-shop"></i>
+        <span>pengantar</span></a>
     </li>
 
     <li class="nav-item">
