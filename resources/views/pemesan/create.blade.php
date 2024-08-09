@@ -5,7 +5,7 @@
 @section('contents')
     <h1 class="mb-0"></h1>
     <hr />
-    <form action="{{ route('mfrflorists.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pemesan.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
             <div class="col">

@@ -1,46 +1,63 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
-
 @section('contents')
-    <h1 class="mb-0">Profile</h1>
-    <hr />
+    <form action="{{ route('pengantar.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card card-danger">
+                        <div class="card-header text-center">
+                            <h3 class="card-title">profile</h3>
+                        </div>
+                        <div class="card-footer text-center">
+                            <i class="fas fa-camera-retro fa-3x"></i>
+                            <p>Upload Foto/Gambar</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" name="profil" class="form-control" placeholder="Masukkan Profil" required>
+                                </div>
+                            </div>
 
-    <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="" >
-    <div class="row">
-        <div class="col-md-12 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                <div class="row" id="res"></div>
-                <div class="row mt-2">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" name="hp" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask placeholder="Masukkan Nomor HP" required>
+                                </div>
+                            </div>
 
-                    <div class="col-md-6">
-                        <label class="labels">Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="first name" value="{{ auth()->user()->name }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Email</label>
-                        <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}" placeholder="Email">
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6">
-                        <label class="labels">Phone</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Address</label>
-                        <input type="text" name="address" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address">
-                    </div>
-                </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                    </div>
+                                    <input type="text" name="tempat_tinggal" class="form-control" placeholder="Masukkan Tempat Tinggal" required>
+                                </div>
+                            </div>
 
-                <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    <input type="email" name="email" class="form-control" placeholder="Masukkan Gmail" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Icon Foto/Gambar -->
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-primary">INPUT</button>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </div>
-
-        </form>
+    </form>
 @endsection

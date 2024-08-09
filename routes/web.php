@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\mfrfloristController;
+use App\Http\Controllers\pemesanController;
+use App\Http\Controllers\PengantarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,14 +45,28 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::controller(mfrfloristController::class)->prefix('mfrflorists')->group(function () {
-        Route::get('', 'index')->name('mfrflorists');
-        Route::get('create', 'create')->name('mfrflorists.create');
-        Route::post('store', 'store')->name('mfrflorists.store');
-        Route::get('show/{id}', 'show')->name('mfrflorists.show');
-        Route::get('edit/{id}', 'edit')->name('mfrflorists.edit');
-        Route::put('edit/{id}', 'update')->name('mfrflorists.update');
-        Route::delete('destroy/{id}', 'destroy')->name('mfrflorists.destroy');
+    Route::controller(PemesanController::class)->prefix('pemesan')->group(function () {
+        Route::get('', 'index')->name('pemesan');
+        Route::get('create', 'create')->name('pemesan.create');
+        Route::post('store', 'store')->name('pemesan.store');
+        Route::get('show/{id}', 'show')->name('pemesan.show');
+        Route::get('edit/{id}', 'edit')->name('pemesan.edit');
+        Route::put('edit/{id}', 'update')->name('pemesan.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pemesan.destroy');
+
+
+
+    });
+
+    Route::controller(PengantarController::class)->prefix('pengantar')->group(function () {
+        Route::get('', 'index')->name('pengantar');
+        Route::get('create', 'create')->name('pengantar.create');
+        Route::post('store', 'store')->name('pengantar.store');
+        Route::get('show/{id}', 'show')->name('pengantar.show');
+        Route::get('edit/{id}', 'edit')->name('pengantar.edit');
+        Route::put('edit/{id}', 'update')->name('pengantar.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pengantar.destroy');
+
 
 
     });
@@ -61,7 +77,7 @@ Route::middleware('auth')->group(function () {
         return view('pengantar.index');
     });
     Route::get('/tambah', function () {
-        return view('pengantar.tambah');
+        return view('pengantar.create');
     });
 
 

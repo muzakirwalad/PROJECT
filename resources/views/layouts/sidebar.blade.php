@@ -5,7 +5,7 @@
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      <div class="sidebar-brand-text mx-3">SB Admin </sup></div>
     </a>
 
     <!-- Divider -->
@@ -19,16 +19,23 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('mfrflorists') }}">
-        <i class="bi bi-shop"></i>
+      <a class="nav-link" href="{{ route('pemesan') }}">
+        <i class="bi bi-person"></i>
         <span>pemesan</span></a>
     </li>
 
     <li class="nav-item">
+        <a class="nav-link" href="/pembayaran">
+          <i class="bi bi-credit-card"></i>
+          <span>pembayaran</span></a>
+      </li>
+
+    <li class="nav-item">
       <a class="nav-link" href="/pengantar">
-        <i class="bi bi-shop"></i>
+        <i class="bi bi-person"></i>
         <span>pengantar</span></a>
     </li>
+
 
     <li class="nav-item">
       <a class="nav-link" href="/profile">

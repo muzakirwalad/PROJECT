@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\mfrflorist;
+use App\Models\pengantar;
 
-class mfrfloristController extends Controller
+class PengantarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $mfrflorist = Mfrflorist::orderBy('created_at', 'DESC')->get();
+        $pengantar = Pengantar::orderBy('created_at', 'DESC')->get();
 
-        return view('mfrflorist.index', compact('mfrflorist'));
+        return view('pengantar.index', compact('pengantar'));
     }
 
     /**
@@ -22,7 +22,7 @@ class mfrfloristController extends Controller
      */
     public function create()
     {
-        return view('mfrflorist.create');
+        return view('pengantar.create');
     }
 
     /**
