@@ -21,9 +21,34 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
+//==============================  --USER---   =============================
+
+Route::middleware(['auth','level:user'])->group(function(){
+    Route::get('/user', function () {
+        return view('user.dashboard');
+    })->middleware('auth');
+
+
+
+
+});
+
+
+
+
+// =============================  --ADMIN---   ===============================
+Route::middleware(['auth', 'level:admin'])->group(function () {
+    Route::get('/admin', function () {
+        // Ganti 'index-admin' dengan nama view halaman index untuk admin
+        return view('admin.dashboard');
+    });
+
+
+
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

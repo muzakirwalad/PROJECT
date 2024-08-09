@@ -176,10 +176,16 @@
             Activity Log
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{ route('logout') }}">
+
+          <form method="POST" action="{{ route('logout') }}" id="logout-form">
+            @csrf
+            <a class="dropdown-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
             Logout
-          </a>
+            </a>
+          </form>
+
         </div>
       </li>
 
