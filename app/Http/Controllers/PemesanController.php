@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\mfrflorist;// Pastikan nama model sesuai konvensi Laravel
+use App\Models\pemesanan;// Pastikan nama model sesuai konvensi Laravel
 
 class PemesanController extends Controller
 {
@@ -12,9 +12,7 @@ class PemesanController extends Controller
      */
     public function index()
     {
-        $pemesan = mfrflorist::orderBy('created_at', 'DESC')->get();
-
-
+        $pemesan = Pemesanan::all();
         return view('pemesan.index', compact('pemesan'));
 
     }

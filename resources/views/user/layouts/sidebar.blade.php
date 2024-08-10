@@ -13,34 +13,15 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="/admin/dashboard">
+      <a class="nav-link" href="/user/dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('pemesan') }}">
-        <i class="bi bi-person"></i>
-        <span>data pemesan</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="/design">
-          <i class="bi bi-credit-card"></i>
-          <span>design</span></a>
-      </li>
-
-    {{-- <li class="nav-item">
-      <a class="nav-link" href="/pengantar">
-        <i class="bi bi-person"></i>
-        <span>pengantar</span></a>
-    </li> --}}
-
-
-    <li class="nav-item">
-      <a class="nav-link" href="/profile">
-        <i class="bi bi-person-badge"></i>
-        <span>Profile</span></a>
+      <a class="nav-link" href="/user/pemesanan">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Pesan Papan Bunga</span></a>
     </li>
 
     <!-- Divider -->

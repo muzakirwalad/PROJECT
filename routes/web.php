@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pemesanController;
 use App\Http\Controllers\PengantarController;
+use App\Http\Controllers\designController;
+use App\Http\Controllers\pemesananController;
+use App\Http\Controllers\KategoriKataKata;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +28,15 @@ Route::get('/', function () {
 //==============================  --USER---   =============================
 
 Route::middleware(['auth','level:user'])->group(function(){
-    Route::get('/user', function () {
+    Route::get('/user/dashboard', function () {
         return view('user.dashboard');
     })->middleware('auth');
 
-
-
+    Route::get('/user/pemesanan',[pemesananController::class, 'index']);
+    Route::get('/user/tambah_pemesanan',[pemesananController::class, 'create']);
+    Route::post('/pemesanan/store',[pemesananController::class, 'store']);
+    Route::put('/pemesanan/store',[pemesananController::class, 'store']);
+    Route::delete('/pemesanan/{id}', [pemesananController::class, 'destroy']);
 
 });
 
@@ -39,12 +45,31 @@ Route::middleware(['auth','level:user'])->group(function(){
 
 // =============================  --ADMIN---   ===============================
 Route::middleware(['auth', 'level:admin'])->group(function () {
-    Route::get('/admin', function () {
+    Route::get('/admin/dashboard', function () {
         // Ganti 'index-admin' dengan nama view halaman index untuk admin
         return view('admin.dashboard');
     });
 
+    Route::get('/kategori',[KategoriKataKata::class, 'index']);
+    Route::get('/kategori/create',[KategoriKataKata::class, 'create']);
+    Route::get('/kategori/store',[KategoriKataKata::class, 'store']);
 
+
+    Route::get('/design',[designController::class, 'index']);
+    Route::get('/design/create',[designController::class, 'create']);
+    Route::post('/design/store',[designController::class, 'store']);
+    Route::delete('/design/{id}',[designController::class, 'destroy']);
+
+
+    Route::controller(PemesanController::class)->prefix('pemesan')->group(function () {
+        Route::get('', 'index')->name('pemesan');
+        Route::get('create', 'create')->name('pemesan.create');
+        Route::post('store', 'store')->name('pemesan.store');
+        Route::get('show/{id}', 'show')->name('pemesan.show');
+        Route::get('edit/{id}', 'edit')->name('pemesan.edit');
+        Route::put('edit/{id}', 'update')->name('pemesan.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pemesan.destroy');
+    });
 
 });
 
@@ -70,18 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::controller(PemesanController::class)->prefix('pemesan')->group(function () {
-        Route::get('', 'index')->name('pemesan');
-        Route::get('create', 'create')->name('pemesan.create');
-        Route::post('store', 'store')->name('pemesan.store');
-        Route::get('show/{id}', 'show')->name('pemesan.show');
-        Route::get('edit/{id}', 'edit')->name('pemesan.edit');
-        Route::put('edit/{id}', 'update')->name('pemesan.update');
-        Route::delete('destroy/{id}', 'destroy')->name('pemesan.destroy');
 
-
-
-    });
 
     Route::controller(PengantarController::class)->prefix('pengantar')->group(function () {
         Route::get('', 'index')->name('pengantar');

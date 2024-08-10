@@ -32,9 +32,9 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
 
         if ($user->level === 'admin') {
-            return redirect('/admin');
+            return redirect('/admin/dashboard');
         } elseif ($user->level === 'user') {
-            return redirect('/user');
+            return redirect('/user/dashboard');
         }
         // else {
         //         return redirect()->intended(RouteServiceProvider::HOME);
